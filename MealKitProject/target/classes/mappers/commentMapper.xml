@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.edu.mealkit.mapper.commentMapper">
+
+	<!-- 댓글 목록 -->
+	<select id = "listComment" resultType = "com.edu.board.domain.CommentDTO">
+		SELECT DISTINCT idx, bno, comment, writer, r.reg_date, update_date
+		FROM reply r, member m
+		WHERE r.writer = (m.id or '매니저')
+		AND bno = #{bno};
+	</select>
+	
+	<!-- 자기 댓글 삭제위한 찾기 -->
+	<select id="findResult" resultType="String">
+		SELECT writer
+		FROM reply 
+		WHERE idx = #{idx}
+	</select>
+	
+	<!-- 댓글입력 -->
+	<insert id ="insertComment" >
+		INSERT INTO reply (idx, bno, comment, writer) 
+		VALUES (#{idx}, #{bno}, #{comment}, #{writer})
+	</insert>
+	
+	<!-- 댓글상세보기 -->
+	<select id = "detailComment" resultType = "com.edu.board.domain.CommentDTO">
+		SELECT idx, bno, comment, writer, reg_date, update_Date
+		FROM reply
+		WHERE idx = #{idx}
+	</select>
+	
+	<!-- 댓글삭제 -->
+	<delete id = "deleteComment">
+		DELETE FROM reply
+		WHERE idx = #{idx}
+	</delete>
+	
+</mapper>

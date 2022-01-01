@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace = "com.edu.mealkit.mapper.noticeMapper">
+
+	<!-- 게시글 목록 -->
+	<select id="noticelist" parameterType="String" resultType="com.edu.notice_board.domain.NoticeVO">
+	SELECT 	notice_bno, notice_title, notice_content
+	FROM	mealkitshopdb.notice_board
+	</select>
+	
+	<!-- 게시글 상세 정보 -->
+	<select id="view" parameterType="int" resultType="com.edu.notice_board.domain.NoticeVO">
+	SELECT 	notice_bno, notice_title, notice_content
+	FROM	notice_board
+	WHERE	notice_bno = #{notice_bno}	
+	</select>
+	
+</mapper>
