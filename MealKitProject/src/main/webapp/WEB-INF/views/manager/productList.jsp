@@ -44,7 +44,7 @@
 
 		<c:forEach var="list" items="${productList}">	
 			<tr>
-				<td align=right>${list.mk_id }</td>
+				<td align=center>${list.mk_id}</td>
 				<td align=center>${list.mk_kind}</td>
 				<td align=left><a href="/manager/productView?mk_id=${list.mk_id}">${list.mk_name}</a> </td>
 				<td align=right>${list.mk_price}원</td>

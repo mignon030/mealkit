@@ -34,6 +34,9 @@ public interface MealkitService {
 	// 추천인
 	public MemberDTO cc_id(String id, String ccid) throws Exception;
 
+	// 본인 아이디 추천인 추천 불가
+	public String findCC_id(String id) throws Exception;
+
 	// 추천인 맴버 여부
 	public int findccname(String id) throws Exception;
 

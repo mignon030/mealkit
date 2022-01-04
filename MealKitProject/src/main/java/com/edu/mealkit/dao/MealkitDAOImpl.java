@@ -145,6 +145,15 @@ public class MealkitDAOImpl implements MealkitDAO {
 		return sqlSession.selectOne(nameSpace + ".ccTrue", ccTure);
 		
 	} // end int ccTrue(String ccTure)
+	
+	//-------------------------------------------------------------------------------------------------
+	// 본인 아이디 추천인 추천 불가
+	//-------------------------------------------------------------------------------------------------
+	@Override
+	public String findCC_id(String id) throws Exception {
+		return sqlSession.selectOne(nameSpace + ".findCC_id", id);
+		
+	} // end MemberDTO findCC_id(String id)
 
 	
 } // end class MealkitDAOImpl implements MealkitDAO

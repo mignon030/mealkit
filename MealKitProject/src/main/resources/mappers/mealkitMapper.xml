@@ -88,9 +88,16 @@
 	
 	<!-- 추천인 여부 -->
 	<select id="ccTrue" parameterType="com.edu.mealkit.dto.MemberDTO" resultType="int">
-		select count(m_cc)
-		from member
-		where id=#{ccid}	
+		SELECT count(m_cc)
+		FROM member
+		WHERE id=#{ccid}	
+	</select>
+	
+	<!-- 본인 아이디 추천인 추천 불가 -->
+	<select id="findCC_id" resultType="com.edu.mealkit.dto.MemberDTO">
+		SELECT m_cc
+		FROM member
+		WHERE id = #{id}
 	</select>
 
 </mapper>

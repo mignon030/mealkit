@@ -262,8 +262,6 @@ public class MealkitController {
 		// 구매내역 모두 찾는 메서드
 		//-----------------------------------------------------------------------------------------------------------
 		List<BuyDTO> orderList = shopService.getBuys(memberDTO.getId());
-		BuyDTO buyDTO = new BuyDTO();
-         
 		model.addAttribute("orderList", orderList);
       
 	} // end void myPage(HttpServletRequest req, Model model)
@@ -294,7 +292,20 @@ public class MealkitController {
 	// 추천인 : get
 	//-----------------------------------------------------------------------------------------------------------
 	@RequestMapping(value="/cc_id", method = RequestMethod.GET)
-	public String getccIDParam() throws Exception {
+	public String getccIDParam(HttpSession session, Model model) throws Exception {
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		
+		//-----------------------------------------------------------------------------------------------------------
+		// 본인 아이디는 추천인으로 추천 불가
+		//-----------------------------------------------------------------------------------------------------------
+		memberDTO.setM_cc(mealkitService.findCC_id(memberDTO.getId()));
+		
+		if(memberDTO.getM_cc() == memberDTO.getId()) {
+			model.addAttribute("already", "already");
+		}
+		
+		logger.info("심심 " + model);
+		
 		return "/mealkit/cc_id";
 		
 	} // end String getccIDParam()
@@ -349,6 +360,26 @@ public class MealkitController {
 		model.addAttribute("allMoney", allMoney);
       
 	} // end void orderView(@RequestParam("order_id") String order_id, Model model)
+	
+	//-------------------------------------------------------------------------------------------------
+	// 적립금 확인하기
+	//-------------------------------------------------------------------------------------------------
+	@RequestMapping("/point")
+	public void point(HttpSession session, Model model) throws Exception {
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		model.addAttribute("member", memberDTO);
+		
+		List<BuyDTO> lists = shopService.getBuys(memberDTO.getId());
+		BuyDTO buyDTO = new BuyDTO();
+		int allPoint = 0;
+		for(int i=0; i<lists.size(); i++) {
+			allPoint = lists.get(i).getPoint();
+		}
+		buyDTO.setPoint(allPoint);
+		
+		model.addAttribute("allPoint", allPoint);
+		
+	} // end void point(HttpSession session, Model model)
 	   
 
 } // end class MealkitController

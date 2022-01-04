@@ -11,17 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.edu.mealkit">
-		<level value="info" />
-	</logger>
-	
-	<!-- Application Loggers -->
-	<logger name="com.edu.board">
-		<level value="info" />
-	</logger>
-	
-	<!-- Application Loggers -->
-	<logger name="com.edu.notice_board">
+	<logger name="com.edu">
 		<level value="info" />
 	</logger>
 	

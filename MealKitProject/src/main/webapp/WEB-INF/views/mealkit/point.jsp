@@ -1,12 +1,10 @@
-<%@ page session="true" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c"			uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt"			uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${member.id}님의 정보</title>
+<title>${member.id}님의 적립금</title>
 <%@ include file="../include/includeFile.jsp" %>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;800&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
@@ -41,6 +39,7 @@ th { text-align:center; }
 
 </style>
 </head>
+
 <body>
 <%@ include file="../include/header.jsp" %>
 <div class="t_visual">
@@ -83,35 +82,23 @@ th { text-align:center; }
 		</div>
 		
 		<div class="m_content">
-			<p class="order">주문/배송 조회 및 변경</p>
+			<p class="order">적립금</p>
 			<hr>
-			<c:if test="${orderList != '[]' }">
-			
-				<table class="table table-hover table-bordered">
-					<thead>
-						<tr class="info">
-							<th>주문번호</th>
-							<th>상품명</th>
-							<th>수량</th>
-							<th>배송상태</th>
-							<th>적립금 예정</th>
-						</tr>
-					</thead>
-					
-					<tbody>
-						<c:forEach var="orderList" items="${orderList}">		
-							<tr>
-								<td align=center><a href="../mealkit/myOrderView?order_id=${orderList.order_id}">${orderList.order_id}</a></td>
-								<td align=center>${orderList.mk_name}</td>
-								<td align=center>${orderList.buy_count}</td>
-								<td align=center>${orderList.delivery}</td>
-								<td align=center>${orderList.point}</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr class="info">
+						<th>사용 가능 적립금</th>
+						<th>사용한 적립금</th>
+					</tr>
+				</thead>
 				
-			</c:if>
+				<tbody>		
+					<tr>
+						<td align=center>${allPoint}</td>
+						<td align=center>0</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </div>
