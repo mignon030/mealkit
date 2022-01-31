@@ -131,16 +131,16 @@
 	
 	<!-- buy테이블에 상품들 담기 -->
 	<insert id="insertPay" parameterType="com.edu.mealkit.dto.BuyDTO">
-		INSERT INTO buy (order_id, delivery_name, delivery_tel, delivery_address, member_id, buy_count, buy_price, mk_name, mk_id)
-		SELECT #{order_id}, #{delivery_name}, #{delivery_tel}, #{delivery_address}, buy_id, buy_count, buy_price, mk_name, mk_id
+		INSERT INTO buy (order_id, delivery_name, delivery_tel, delivery_address, member_id, buy_count, buy_price, point, mk_name, mk_id)
+		SELECT #{order_id}, #{delivery_name}, #{delivery_tel}, #{delivery_address}, buy_id, buy_count, buy_price, (buy_price*0.05) as point, mk_name, mk_id
 		FROM cart
 		WHERE buy_id = #{member_id}
 	</insert>
 	
 	<!-- buy테이블에 선택한 상품들 담기 -->
 	<insert id="insertChoicePay" parameterType="com.edu.mealkit.dto.BuyDTO">
-		INSERT INTO buy (order_id, delivery_name, delivery_tel, delivery_address, member_id, buy_count, buy_price, mk_name, mk_id)
-		SELECT #{order_id}, #{delivery_name}, #{delivery_tel}, #{delivery_address}, buy_id, buy_count, buy_price, mk_name, mk_id
+		INSERT INTO buy (order_id, delivery_name, delivery_tel, delivery_address, member_id, buy_count, buy_price, point, mk_name, mk_id)
+		SELECT #{order_id}, #{delivery_name}, #{delivery_tel}, #{delivery_address}, buy_id, buy_count, buy_price, (buy_price*0.05), mk_name, mk_id
 		FROM cart
 		WHERE buy_id = #{member_id}
 		AND mk_id = #{mk_id}

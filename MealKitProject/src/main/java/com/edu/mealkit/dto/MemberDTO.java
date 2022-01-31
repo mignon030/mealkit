@@ -15,7 +15,14 @@ public class MemberDTO {
 	private	String	tel;		// 회원 전화번호
 	private	String	address;	// 회원 주소
 	private	String	birth;		// 회원 생년월일
+	private String	m_cc;
 	
+	public String getM_cc() {
+		return m_cc;
+	}
+	public void setM_cc(String m_cc) {
+		this.m_cc = m_cc;
+	}
 	public String getId() {
 		return id;
 	}
@@ -61,9 +68,8 @@ public class MemberDTO {
 	
 	@Override
 	public String toString() {
-		return "MemberDTO [id=" + id + ", password=" + password + ", name=" + name + ", reg_date=" + reg_date
-				+ ", tel=" + tel + ", address=" + address + ", birth=" + birth + "]";
+		return "MemberDTO [id=" + id + ", password=" + password + ", name=" + name + ", reg_date=" + reg_date + ", tel="
+				+ tel + ", address=" + address + ", birth=" + birth + ", m_cc=" + m_cc + "]";
 	}
-	
 	
 } // End - public class MealKitDTO

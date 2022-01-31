@@ -61,26 +61,6 @@ public class ShopController {
     @Resource(name="uploadPath")
     String uploadPath;
 	
-	/*
-	// 반찬보기_list 페이지로 이동
-	@RequestMapping("/goods_list")
-	private String goodslist(Model model,  @ModelAttribute("scri") SearchCriteria scri) throws Exception {
-		
-		List<MealkitKindDTO> mealkitKindDTO = managerService.getKind();
-		model.addAttribute("kind",mealkitKindDTO);
-		//게시글 목록 보여주기 화면으로 가기 전에 보여줄 데이터를 가져와서 model에 담든다.
-		model.addAttribute("listPage", shopService.goodslist(scri));
-		
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(scri);
-		pageMaker.setTotalCount(shopService.listCount(scri));
-		
-		model.addAttribute("pageMaker", pageMaker);
-		//model.addAttribute("list", boardService2.boardList());
-		return "shop/goods_list";
-		
-	} // end String goodslist(Model model,  @ModelAttribute("scri") SearchCriteria scri) */
-	
 	//-------------------------------------------------------------------------------------------------
 	// 반찬보기_list 페이지로 이동
 	//-------------------------------------------------------------------------------------------------
@@ -89,15 +69,7 @@ public class ShopController {
 		
 		List<MealkitKindDTO> mealkitKindDTO = managerService.getKind();
 		model.addAttribute("kinds", mealkitKindDTO);
-		// 게시글 목록 보여주기 화면으로 가기 전에 보여줄 데이터를 가져와서 model에 담든다.
-		// model.addAttribute("listPage", shopService.goodslist(scri));
-		/*
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(scri);
-		pageMaker.setTotalCount(shopService.listCount(scri));
 		
-		model.addAttribute("pageMaker", pageMaker);
-		*/
 		// 반찬 kind대로 뿌려주기
 		List<MealkitDTO> meals = shopService.allMeals();
 		
@@ -582,7 +554,7 @@ public class ShopController {
 			// 장바구니 상품들을 Buy테이블에 담는 메서드
 			//-------------------------------------------------------------------------------------------------
 			shopService.insertPay(buyDTO);
-			
+						
 			//-------------------------------------------------------------------------------------------------
 			// 장바구니 모두 삭제하기
 			//-------------------------------------------------------------------------------------------------

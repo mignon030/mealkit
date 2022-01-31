@@ -37,6 +37,9 @@ public interface MealkitDAO {
 	// 추천인 멤버 여부
 	public int findccname(String id) throws Exception;
 	
+	// 본인 아이디 추천인 추천 불가
+	public String findCC_id(String id) throws Exception;
+	
 	// 추천인 기입 여부
 	public int ccTrue(String ccTure) throws Exception;
 	

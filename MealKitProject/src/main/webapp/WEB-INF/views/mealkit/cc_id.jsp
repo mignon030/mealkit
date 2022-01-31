@@ -85,7 +85,7 @@
 		</div>
 		
 		<div class="m_content">
-			<p class="order">추천인 아이디</p>
+			<p class="order">추천인 아이디${already}</p>
 			<hr>
 			
 			<form class="form-horizontal" method="post" action="/mealkit/cc_id" id="ccidForm">

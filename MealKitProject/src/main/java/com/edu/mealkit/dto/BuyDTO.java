@@ -17,7 +17,14 @@ public class BuyDTO {
 	private String delivery_tel;
 	private String delivery_address;
 	private String delivery;
+	private int    point;
 	
+	public int getPoint() {
+		return point;
+	}
+	public void setPoint(int point) {
+		this.point = point;
+	}
 	public String getOrder_id() {
 		return order_id;
 	}
@@ -96,11 +103,8 @@ public class BuyDTO {
 		return "BuyDTO [order_id=" + order_id + ", buy_id=" + buy_id + ", member_id=" + member_id + ", buy_count="
 				+ buy_count + ", buy_price=" + buy_price + ", mk_name=" + mk_name + ", mk_id=" + mk_id + ", buy_date="
 				+ buy_date + ", delivery_name=" + delivery_name + ", delivery_tel=" + delivery_tel
-				+ ", delivery_address=" + delivery_address + ", delivery=" + delivery + "]";
+				+ ", delivery_address=" + delivery_address + ", delivery=" + delivery + ", point=" + point + "]";
 	}
-	
-	
-	
 	
 	
 } // end class BuyDTO
